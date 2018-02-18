@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
@@ -7,15 +7,17 @@
             <h3>Dashboard</h3>
         </div>
         
-        {{--  <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
-                <div class="panel-body">
-                    You are logged in as Admin!
+        
+        <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fa fa-users"></i> Usuários</h5>
+                        <p class="card-text">{{ $users }} usuários cadastrados</p>
+                        <a href="#" class="btn btn-primary">Ver</a>
+                    </div>
                 </div>
             </div>
-        </div>  --}}
+        </div>
     </div>
 </div>
 @endsection

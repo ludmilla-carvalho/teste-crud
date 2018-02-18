@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $id =  Auth::user()->id;
+        if (!$user = User::find($id)) {
+            Session::flush();
+            return response()->redirectToRoute('login');
+        } else {
+            return view('home', compact('user'));
+        }
     }
 }

@@ -59,7 +59,11 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        if (!$user = User::find($id)) {
+            return response()->redirectToRoute('home')->with('error', 'Usuário não encontrado!');
+        } else {
+            return view('home', compact('user'));
+        }
     }
 
     /**

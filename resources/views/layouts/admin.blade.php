@@ -31,17 +31,33 @@
                 </button>
 
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    @if(Auth::guard('admin')->check())
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item @if($current_route == 'admin.home') active @endif">
+                                <a class="nav-link" href="{{ route('admin.home') }}"><i class="fa fa-desktop"></i> Dashboard <span class="sr-only"></span></a>
+                            </li>
+                            <li class="nav-item dropdown @if($current_route == 'admin.users.index' ||  $current_route == 'admin.users.create' || $current_route == 'admin.users.edit') active @endif">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-user"></i> Usuários
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('admin.users.index') }}"><i class="fa fa-bars"></i> Lista</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ route('admin.users.create') }}"><i class="fa fa-plus"></i> Novo usuário</a>
+                                </div>
+                            </li>
+                        </ul>
+                    @endif
+
                     <ul class="navbar-nav">
-                        @if (Auth::guest())
-                            <li class="nav-item"><a href="{{ route('admin.login') }}" class="nav-link"><i class="fa fa-sign-in-alt"></i> Painel Administrativo</a></li>
-                        @else
+                        @if(Auth::guard('admin')->check())
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-user-plus"></i> {{ Auth::user()->name }}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                    <a href="{{ route('logout') }}" class="dropdown-item"
+                                    <a href="{{ route('admin.logout') }}" class="dropdown-item"
                                     onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                     <i class="fa fa-sign-out-alt"></i> Logout
                                     </a>
