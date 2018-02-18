@@ -2,14 +2,21 @@
 
 @section('content')
 
-@include('admin.includes.alert_messages')
-
 <div class="container">
     <div class="row">
         <div class="col-sm-12 py-3">
             <h3>Usuários</h3>
+
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ route('admin.users.index')}}">Usuários</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Lista</li>
+                </ol>
+            </nav>
         </div>
 
+        @include('admin.includes.alert_messages')
+        
         <div class="col-sm-12 py-3">
             {!! $dataTable->table() !!}
         </div>  

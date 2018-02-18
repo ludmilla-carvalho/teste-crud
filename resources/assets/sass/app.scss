@@ -21,6 +21,9 @@ $text-color: #636b6f;
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 
+//JQuery-ui
+@import '~jquery-ui/themes/base/all.css';
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -41,10 +44,15 @@ body {
     background-color: #f5f5f5;
 }
 
-form .form-control:focus{
-    border-color: #ced4da;
-    box-shadow: none;
+.breadcrumb{
+    padding: 0;
+    background: none;
 }
+
+.btn:focus,.btn:active, input, a {
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+ }
 
 table.dataTable{
     border-collapse: collapse !important;

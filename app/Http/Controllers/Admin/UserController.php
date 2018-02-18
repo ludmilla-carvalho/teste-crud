@@ -22,28 +22,6 @@ class UserController extends Controller
     {
         return $dataTable->render('admin.users.index');
     }
-    /*public function index(Builder $builder)
-    {
-        if (request()->ajax()) {
-            return DataTables::of(User::query())->toJson();
-        }
-        //table table-striped table-bordered
-        $html = $builder->columns([
-            ['data' => 'id', 'name' => 'id', 'title' => 'Id'],
-            ['data' => 'name', 'name' => 'name', 'title' => 'Nome'],
-            ['data' => 'email', 'name' => 'email', 'title' => 'Email'],
-            ['data' => 'cpf', 'name' => 'cpf', 'title' => 'CPF'],
-            ['data' => 'birthday', 'name' => 'birthday', 'title' => 'Data de nascimento', 'searchable' => false]
-        ])->parameters([
-            'pageLength' => 5,
-            'lengthMenu' => [ 5, 10, 25, 50 ],
-            //'dom'          => 'Bfrtip',
-            'buttons'      => ['export'],
-            'language' => ['url' => "http://cdn.datatables.net/plug-ins/1.10.16/i18n/Portuguese-Brasil.json"]
-        ]);
-
-        return view('admin.users.index', compact('html'));
-    }*/
 
     /**
      * Show the form for creating a new resource.
@@ -52,7 +30,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create', ['user' => new User()]);
     }
 
     /**
@@ -63,7 +41,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = $this->_validate($request);
+        $data = $request->all();
+        $data['password'] = bcrypt($data['password']);
+        if ($user = User::create($data)) {
+            return response()->redirectToRoute('admin.users.index')->with('success', 'Usuário criado com sucesso!');
+        } else {
+            return response()->redirectToRoute('admin.users.create')->with('error', 'Erro ao criar usuário!');
+        }
     }
 
     /**
@@ -85,7 +70,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        if (!$user = User::find($id)) {
+            return response()->redirectToRoute('admin.users.index')->with('error', 'Usuário não encontrado!');
+        } else {
+            return view('admin.users.edit', compact('user'));
+        }
     }
 
     /**
@@ -97,7 +86,21 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$2y$10$FpfIS6fYXqY/Nc7lvqAnkuGl1kvQEfJ4RXoVXTcdzFvwyMlhI2CQ2
+        if (!$user = User::find($id)) {
+            return response()->redirectToRoute('admin.users.index')->with('error', 'Usuário não encontrado!');
+        } else {
+            $this->_validate($request);
+            $data = $request->all();
+            if (strlen($data['password']) > 5) {
+                $data['password'] = bcrypt($data['password']);
+            } else {
+                unset($data['password']);
+            }
+            $user->fill($data);
+            $user->save();
+            return response()->redirectToRoute('admin.users.index')->with('success', 'Usuário alterado com sucesso!');
+        }
     }
 
     /**
@@ -114,5 +117,27 @@ class UserController extends Controller
             $user->delete();
             return response()->redirectToRoute('admin.users.index')->with('success', 'Usuário excluído com sucesso!');
         }
+    }
+
+    /**
+     * Form Validation
+     *
+     * @param Request $request
+     * @return void
+     */
+    protected function _validate(Request $request)
+    {
+        $roles = [
+            'name'  => 'required|string|max:198',
+            'email' => 'required|string|email|unique:users,email,' . $request->id,
+            'cpf' => 'required|formato_cpf|cpf',
+            'birthday' => 'required|date_format:d/m/Y'
+        ];
+
+        if ($request->password) {
+            $roles['password'] = 'required|string|min:6|confirmed';
+        }
+
+        return $this->validate($request, $roles);
     }
 }

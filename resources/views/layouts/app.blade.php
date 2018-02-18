@@ -36,14 +36,14 @@
                             <li class="nav-item @if($current_route == 'admin.home') active @endif">
                                 <a class="nav-link" href="{{ route('admin.home') }}"><i class="fa fa-desktop"></i> Dashboard <span class="sr-only"></span></a>
                             </li>
-                            <li class="nav-item dropdown @if($current_route == 'admin.users.index') active @endif">
+                            <li class="nav-item dropdown @if($current_route == 'admin.users.index' ||  $current_route == 'admin.users.create' || $current_route == 'admin.users.edit') active @endif">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-user"></i> Usuários
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('admin.users.index') }}"><i class="fa fa-bars"></i> Lista</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"><i class="fa fa-plus"></i> Novo usuário</a>
+                                <a class="dropdown-item" href="{{ route('admin.users.create') }}"><i class="fa fa-plus"></i> Novo usuário</a>
                                 </div>
                             </li>
                         </ul>

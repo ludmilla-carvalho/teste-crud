@@ -1,5 +1,5 @@
 
-window._ = require('lodash');
+//window._ = require('lodash');
 
 window.Popper = require('popper.js/dist/umd/popper');
 
@@ -15,6 +15,9 @@ try {
 
     require('bootstrap');
 } catch (e) {}
+
+require('./vendor/jquery.mask');
+require('jquery-ui/ui/widgets/datepicker');
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
