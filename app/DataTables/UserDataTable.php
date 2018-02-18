@@ -42,11 +42,6 @@ class UserDataTable extends DataTable
             ->minifiedAjax()
             ->addAction(['width' => '80px', 'title' => 'Ações'])
             ->parameters($this->getBuilderParameters()
-            /*
-            ->editColumn('birthday', function ($user) {
-                return $user->updated_at->format('d/m/Y');
-            })
-            */
         );
     }
 

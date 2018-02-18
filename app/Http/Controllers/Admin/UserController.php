@@ -108,6 +108,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (!$user = User::find($id)) {
+            return response()->redirectToRoute('admin.users.index')->with('error', 'Usuário não encontrado!');
+        } else {
+            $user->delete();
+            return response()->redirectToRoute('admin.users.index')->with('success', 'Usuário excluído com sucesso!');
+        }
     }
 }

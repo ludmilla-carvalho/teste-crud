@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+@include('admin.includes.alert_messages')
+
 <div class="container">
     <div class="row">
         <div class="col-sm-12 py-3">
@@ -8,25 +11,13 @@
         </div>
 
         <div class="col-sm-12 py-3">
-            {{--  $html->table()  --}}
             {!! $dataTable->table() !!}
         </div>  
 
-        
-        
-        {{--  <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
-                <div class="panel-body">
-                    You are logged in as Admin!
-                </div>
-            </div>
-        </div>  --}}
     </div>
 </div>
 
-@include('admin.includes.modal')
+@include('admin.includes.modal_delete')
 
 @endsection
 
