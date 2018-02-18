@@ -2,8 +2,27 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
 // Variables
-@import "variables";
+//@import "variables";
+
+// Brands
+$primary: #17a2b8;
+$success: #20c997;
+/*$info: #8eb4cb;
+$success: #2ab27b;
+$warning: #cbb956;
+$danger: #bf5329;*/
+
+// Typography
+$font-family-sans-serif: "Raleway", sans-serif;
+$font-size-base: .875rem; // 14px
+$line-height-base: 1.6;
+$text-color: #636b6f;
 
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
+
+form .form-control:focus{
+    border-color: #ced4da;
+    box-shadow: none;
+}
 
