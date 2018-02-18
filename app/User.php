@@ -26,4 +26,19 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function setBirthdayAttribute($value)
+    {
+        if ($value) {
+            $this->attributes['birthday'] = \Carbon\Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
+        }
+    }
+
+
+    public function getBirthdayAttribute($value)
+    {
+        if ($value) {
+            return \Carbon\Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y');
+        }
+    }
 }

@@ -11,8 +11,9 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     
@@ -33,14 +34,14 @@
                     @if(Auth::guard('admin')->check())
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item @if($current_route == 'admin.home') active @endif">
-                                <a class="nav-link" href="#"><i class="fa fa-desktop"></i> Dashboard <span class="sr-only"></span></a>
+                                <a class="nav-link" href="{{ route('admin.home') }}"><i class="fa fa-desktop"></i> Dashboard <span class="sr-only"></span></a>
                             </li>
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown @if($current_route == 'admin.users.index') active @endif">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-user"></i> Usuários
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#"><i class="fa fa-bars"></i> Lista</a>
+                                <a class="dropdown-item" href="{{ route('admin.users.index') }}"><i class="fa fa-bars"></i> Lista</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#"><i class="fa fa-plus"></i> Novo usuário</a>
                                 </div>
@@ -87,7 +88,17 @@
         @yield('content')
     </div>
 
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">CRUD &copy; {{ date('Y') }}</span>
+        </div>
+    </footer>
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
+    @stack('scripts')
 </body>
 </html>

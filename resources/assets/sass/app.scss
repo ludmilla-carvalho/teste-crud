@@ -21,8 +21,32 @@ $text-color: #636b6f;
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 40px;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 40px;
+    line-height: 40px; /* Vertically center the text there */
+    background-color: #f5f5f5;
+}
+
 form .form-control:focus{
     border-color: #ced4da;
     box-shadow: none;
+}
+
+table.dataTable{
+    border-collapse: collapse !important;
 }
 
