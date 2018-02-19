@@ -41,12 +41,12 @@
                                 <i class="fa fa-user-plus"></i> {{ Auth::user()->name }}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                    <a href="{{ route('logout') }}" class="dropdown-item"
+                                    <a href="{{ route('user.logout') }}" class="dropdown-item"
                                     onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                     <i class="fa fa-sign-out-alt"></i> Logout
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    <form id="logout-form" action="{{ route('user.logout') }}" method="POST"
                                         style="display: none;">
                                         {{ csrf_field() }}
                                     </form>

@@ -62,7 +62,7 @@
                                     <i class="fa fa-sign-out-alt"></i> Logout
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST"
                                         style="display: none;">
                                         {{ csrf_field() }}
                                     </form>

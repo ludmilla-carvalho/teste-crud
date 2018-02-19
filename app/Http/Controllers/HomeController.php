@@ -31,7 +31,7 @@ class HomeController extends Controller
             Session::flush();
             return response()->redirectToRoute('login');
         } else {
-            return view('home', compact('user'));
+            return view('site.home', compact('user'));
         }
     }
 }
