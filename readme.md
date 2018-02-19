@@ -3,7 +3,7 @@ Crud de usuários e administradores usando Laravel 5.5
 ### Demo
 [http://lab-crud.tk](http://lab-crud.tk/) 
 **Login do Usuario user** 
-user@devlud.com.br 
+user@devlud.com.br_
 **Senha do Usuario user** 
 secret 
 ### Acesso ao Admin 
@@ -14,7 +14,7 @@ admin@devlud.com.br
 secret 
 
 ### Requerimentos
-- PHP >= 7.0.0
+- PHP >= 7.1
 - OpenSSL PHP Extension
 - PDO PHP Extension
 - Mbstring PHP Extension
