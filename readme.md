@@ -3,7 +3,7 @@ Crud de usuários e administradores usando Laravel 5.5
 ### Demo
 [http://lab-crud.tk](http://lab-crud.tk/) 
 **Login do Usuario user** 
-user@devlud.com.br_
+user@devlud.com.br
 **Senha do Usuario user** 
 secret 
 ### Acesso ao Admin 
