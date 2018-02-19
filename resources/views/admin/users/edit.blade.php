@@ -8,7 +8,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('admin.users.index')}}">Usuários</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Alaterar usuário</li>
+                    <li class="breadcrumb-item active" aria-current="page">Alterar usuário</li>
                 </ol>
             </nav>
         </div>

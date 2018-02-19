@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'birthday', 'cpf',
     ];
 
     /**
@@ -37,5 +37,19 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new UserResetPassword($token));
+    }
+
+    public function setBirthdayAttribute($value)
+    {
+        if ($value) {
+            $this->attributes['birthday'] = \Carbon\Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
+        }
+    }
+
+    public function getBirthdayAttribute($value)
+    {
+        if ($value) {
+            return \Carbon\Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y');
+        }
     }
 }

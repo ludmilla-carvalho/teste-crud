@@ -18,7 +18,7 @@
                             <li class="list-group-item"><b>Nome:</b> {{ $user->name}}</li>
                             <li class="list-group-item"><b>Email:</b> {{ $user->email}}</li>
                             <li class="list-group-item"><b>Data de nascimento:</b> {{ $user->birthday}}</li>
-                            <li class="list-group-item"><b>CPF</b> {{ $user->cpf}}</li>
+                            <li class="list-group-item"><b>CPF:</b> {{ $user->cpf}}</li>
                         </ul>
                     
                 </div>

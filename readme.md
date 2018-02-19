@@ -1,17 +1,17 @@
 # CRUD de usuários
 Crud de usuários e administradores usando Laravel 5.5
 ### Demo
-[http://lab-crud.tk](http://lab-crud.tk/)
-**Login do Usuario user**
-user@devlud.com.br
-**Senha do Usuario user**
-secret
-### Acesso ao Admin
-[http://lab-crud.tk/admin](http://lab-crud.tk/admin)
-**Login do Administrador**
-admin@devlud.com.br
-**Senha do Administrador**
-secret
+[http://lab-crud.tk](http://lab-crud.tk/) 
+**Login do Usuario user** 
+user@devlud.com.br 
+**Senha do Usuario user** 
+secret 
+### Acesso ao Admin 
+[http://lab-crud.tk/admin](http://lab-crud.tk/admin) 
+**Login do Administrador** 
+admin@devlud.com.br 
+**Senha do Administrador** 
+secret 
 
 ### Requerimentos
 - PHP >= 7.0.0

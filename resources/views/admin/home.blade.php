@@ -13,7 +13,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><i class="fa fa-users"></i> Usuários</h5>
                         <p class="card-text">{{ $users }} usuários cadastrados</p>
-                        <a href="#" class="btn btn-primary">Ver</a>
+                        <a href="{{ route('admin.users.index') }}" class="btn btn-primary">Ver</a>
                     </div>
                 </div>
             </div>
